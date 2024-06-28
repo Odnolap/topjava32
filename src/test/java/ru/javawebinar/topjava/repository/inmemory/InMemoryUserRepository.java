@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static ru.javawebinar.topjava.UserTestData.*;
+import static ru.javawebinar.topjava.CommonTestData.GUEST_ID;
 
 
 @Repository
@@ -19,7 +20,7 @@ public class InMemoryUserRepository extends InMemoryBaseRepository<User> impleme
         put(user);
         put(admin);
         put(guest);
-        counter.getAndSet(GUEST_ID + 1);
+        counter.getAndSet(GUEST_ID);
     }
 
     @Override
