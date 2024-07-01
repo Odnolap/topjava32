@@ -250,3 +250,20 @@
 -  <a href="http://www.bookvoed.ru/book?id=639284">Редмонд Э.: Семь баз данных за семь недель. Введение в современные базы данных и идеологию NoSQL</a>
 -  <a href="http://www.ozon.ru/context/detail/id/3174887/">Brian Goetz: Java Concurrency in Practice</a>
 -  <a href="http://bookvoed.ru/book?id=2593572">G.L. McDowell: Cracking the Coding Interview</a>
+
+## Полезности
+### Разворачиваем Postgres:
+* загружаем контейнер с последним postgres: `docker pull postgres`
+* если на локальной машине уже запущен сервис postgres, надо его остановить
+* запускаем контейнер с postgres: `docker run -p 5432:5432 -d --name topjava_db -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password -e POSTGRES_DB=topjava postgres`  
+  * -p: преобразование портов HOST PORT:CONTAINER PORT (или -P: все порты)
+  * -d: флаг запускает контейнер в фоновом режиме (как демон)
+  * -e: задание переменной окружения 
+  * --name [имя]: устанавливает имя демона для нового контейнера
+
+### ACID
+* Atomicity - Никакая транзакция не будет зафиксирована частично.
+* Consistency - Система находится в согласованном состоянии до начала транзакции, и должна
+оставаться согласованной после её завершения.
+* Isolation - 4 уровня изолированности транзакций: Dirty read; Read commited; Repeatable read; Serializable.
+* Durability - В случае сбоя, после восстановления системы все закомиченные изменения должны быть видны.
