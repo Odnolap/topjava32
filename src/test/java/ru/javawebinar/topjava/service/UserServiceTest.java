@@ -8,7 +8,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 import ru.javawebinar.topjava.UserTestData;
+import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.model.Role;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
@@ -57,9 +59,12 @@ public class UserServiceTest {
     }
 
     @Test
+    @Transactional
     public void get() {
         User user = service.get(USER_ID);
         USER_MATCHER.assertMatch(user, UserTestData.user);
+        List<Meal> userMeals = user.getMeals();
+        System.out.println(">>> ВЫВОД НА КОНСОЛЬ");
     }
 
     @Test
